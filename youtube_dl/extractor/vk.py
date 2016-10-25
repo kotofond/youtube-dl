@@ -369,7 +369,7 @@ class VKIE(VKBaseIE):
                     opts_url = 'http:' + opts_url
                 return self.url_result(opts_url)
 
-        data_json = self._search_regex(r'var\s+vars\s*=\s*({.+?});', info_page, 'vars')
+        data_json = self._search_regex(r'"params":\[({.+?\})\]', info_page, 'vars')
         data = json.loads(data_json)
 
         title = unescapeHTML(data['md_title'])
